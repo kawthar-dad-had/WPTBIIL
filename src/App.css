@@ -1,4 +1,6 @@
-
+div {
+  margin: 10px;
+}
 h1 { 
     font-family: 'Pacifico', cursive;
     color: #DB3EB1;
@@ -6,9 +8,11 @@ h1 {
     text-decoration-color: #41B6E6;
     font-style: italic;
   }
+  h3{
+    text-align: center;
+  }
   
   button.miami {
-    margin: 10px;
     background-color:#41B6E6 !important;
     border-color:#DB3EB1 !important;
   }
@@ -46,7 +50,7 @@ h1 {
     background: #dc3eb1;
     color: white;
     padding: 15px 40px;
-    font-size: 16px;
+    font-size: 10px;
     font-family: 'Pacifico', cursive;
     border: 3px solid #42b6e6;
     cursor: pointer;

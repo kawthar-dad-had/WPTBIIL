@@ -14,7 +14,10 @@ const Stage1 = () => {
     const validate = validateInput(value)
 
     if(validate) {
-      console.log(value);
+      setError([false,""])
+      context.addPlayer(value)
+      textInput.current.value = ""
+
     } else {
       console.log("error");
     }
@@ -31,6 +34,7 @@ const Stage1 = () => {
     }
     return true
   }
+  console.log(context.state.players);
 
   return (
     <>
@@ -44,10 +48,40 @@ const Stage1 = () => {
           />
         </Form.Group>
 
+        { error[0] ?
+          <Alert variant='danger'>
+            {
+              error[1]
+            }
+          </Alert>
+          : null
+        }
+
         <Button className='miami' variant='primary' type='submit'>
             Add Player
         </Button>
-
+        
+        { context.state.players && context.state.players.length > 0 ?
+          <>
+            <hr/>
+            <div>
+              <ul className='list-group'>
+                { context.state.players.map((item,idx) => (
+                  <li key={idx} className="list-group-item d-flex justify-content-between align-items-center
+                  list-group-item-action">{item}
+                  <span className='badge badge-danger' onClick={() => context.removePlayer(idx)}>X</span>
+                  </li>
+                ))
+                }
+              </ul>
+              <div className='action_button'
+              onClick={() => context.next()}>
+                NEXT
+              </div>
+            </div>
+          </>
+          :null
+        }
       </Form>
     </>
   );
