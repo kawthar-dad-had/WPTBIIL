@@ -50,6 +50,15 @@ class MyProvider extends Component {
             result: players[Math.floor(Math.random()*players.length)]
         })
     }
+
+    resetGame = () => {
+        this.setState({
+            stage:1,
+            players: [],
+            result: ''
+        })
+    }
+ 
     render() {
         return(
             <>
@@ -57,7 +66,9 @@ class MyProvider extends Component {
                     state: this.state,
                     addPlayer: this.addPlayerHandler,
                     removePlayer: this.removePlayerHandler,
-                    next: this.nextHandler
+                    next: this.nextHandler,
+                    getNewLooser: this.generateLooser,
+                    reset: this.resetGame
                 }}>
                     {this.props.children}
                 </MyContext.Provider>
